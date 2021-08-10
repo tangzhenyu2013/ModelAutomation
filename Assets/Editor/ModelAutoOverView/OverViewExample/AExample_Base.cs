@@ -1,8 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public interface AExample_Base
+namespace Editor.ModelAutoOverView.OverViewExample
 {
-    ModelAutoOverViewInfo GetTrickOverViewInfo();
+    /// <summary>
+    /// Example的基类
+    /// </summary>
+    [ModelAuto]
+    public abstract class AExample_Base
+    {
+        public abstract ModelAutoOverViewInfo GetTrickOverViewInfo();
+
+        public abstract void Init();
+
+        public abstract void DrawUI(Rect rect);
+
+        public abstract void Destroy();
+    }
 }

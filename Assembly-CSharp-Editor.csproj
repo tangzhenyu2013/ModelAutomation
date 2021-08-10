@@ -65,11 +65,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Editor\GetItemEditorWindowNew.cs" />
+    <Compile Include="Assets\Editor\ModelAutoOverView\Examples\Example_BaseSkin.cs" />
     <Compile Include="Assets\Editor\ModelAutoOverView\Examples\Example_CV.cs" />
+    <Compile Include="Assets\Editor\ModelAutoOverView\Examples\Example_Halo.cs" />
+    <Compile Include="Assets\Editor\ModelAutoOverView\Examples\Example_Plane.cs" />
+    <Compile Include="Assets\Editor\ModelAutoOverView\Examples\Example_StationedSkin.cs" />
     <Compile Include="Assets\Editor\ModelAutoOverView\ModelAutoOverViewEditorWindow.cs" />
     <Compile Include="Assets\Editor\ModelAutoOverView\OverViewExample\AExample_Base.cs" />
+    <Compile Include="Assets\Editor\ModelAutoOverView\OverViewExample\ModelAutoAttribute.cs" />
     <Compile Include="Assets\Editor\ModelAutoOverView\OverViewExample\ModelAutoOverViewInfo.cs" />
+    <Compile Include="Assets\Editor\ModelAutoOverView\OverViewExample\ModelAutoOverViewItem.cs" />
     <Compile Include="Assets\Editor\ModelAutoOverView\OverViewExample\ModelAutoOverViewUtilities.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>E:/TZYUnity/ModelAutomation/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
@@ -329,6 +334,9 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>D:/2018.2.1/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
+      <HintPath>E:/TZYUnity/ModelAutomation/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
+    </Reference>
     <Reference Include="Sirenix.OdinInspector.Attributes">
       <HintPath>E:/TZYUnity/ModelAutomation/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
     </Reference>
@@ -361,9 +369,6 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/Administrator/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
-      <HintPath>E:/TZYUnity/ModelAutomation/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:/2018.2.1/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

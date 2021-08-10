@@ -26,14 +26,14 @@ public class ModelAutoOverViewInfo
     /// <summary>
     /// 图片
     /// </summary>
-    public EditorIcon EditorIcon;
+    public Texture Texture;
 
-    public ModelAutoOverViewInfo(string name, string category, string description, EditorIcon editorIcon)
+    public ModelAutoOverViewInfo(string name, string category, string description, Texture texture)
     {
         Name = name;
         Category = category;
         Description = description;
-        EditorIcon = editorIcon;
+        Texture = texture;
     }
 
     public ModelAutoOverViewInfo()
