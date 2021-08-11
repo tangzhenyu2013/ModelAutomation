@@ -10,12 +10,7 @@ namespace Editor.ModelAutoOverView.OverViewExample
     {
         private static readonly Dictionary<Type, AExample_Base> AExampleBases = new Dictionary<Type, AExample_Base>();
 
-        private static readonly Dictionary<Type, ModelAutoOverViewItem> modelAutoOverViewItems =
-            new Dictionary<Type, ModelAutoOverViewItem>();
-
         private static readonly CategoryComparer CategorySorter = new CategoryComparer();
-
-        public static Texture Texture;
 
         static ModelAutoOverViewUtilities()
         {
@@ -32,7 +27,6 @@ namespace Editor.ModelAutoOverView.OverViewExample
 
                 AExample_Base temp = Activator.CreateInstance(type) as AExample_Base;
                 AExampleBases.Add(type, temp);
-                modelAutoOverViewItems.Add(type, new ModelAutoOverViewItem(temp));
             }
         }
 
@@ -41,32 +35,15 @@ namespace Editor.ModelAutoOverView.OverViewExample
             foreach (var aExampleBase in AExampleBases)
             {
                 ModelAutoOverViewInfo trickOverViewInfo = aExampleBase.Value.GetTrickOverViewInfo();
-                OdinMenuItem odinMenuItem = new OdinMenuItem(tree, trickOverViewInfo.Name, aExampleBase.Key)
+                OdinMenuItem odinMenuItem = new OdinMenuItem(tree, trickOverViewInfo.Name, aExampleBase.Value)
                 {
-                    Value = aExampleBase.Key,
                     SearchString = trickOverViewInfo.Name + trickOverViewInfo.Description,
                     Icon = trickOverViewInfo.Texture
                 };
-                 tree.AddMenuItemAtPath(trickOverViewInfo.Category, odinMenuItem);
+                tree.AddMenuItemAtPath(trickOverViewInfo.Category, odinMenuItem);
             }
             tree.MenuItems.Sort(CategorySorter);
             tree.MarkDirty();
-        }
-
-        private OdinMenuItem SetIcon(Texture sprite)
-        {
-            return null;
-        }
-
-        public static ModelAutoOverViewItem GetItemByType(Type type)
-        {
-            ModelAutoOverViewItem modelAutoOverViewItem;
-            if (modelAutoOverViewItems.TryGetValue(type, out modelAutoOverViewItem))
-            {
-                return modelAutoOverViewItem;
-            }
-
-            return null;
         }
 
         public static AExample_Base GetExampleByType(Type type)

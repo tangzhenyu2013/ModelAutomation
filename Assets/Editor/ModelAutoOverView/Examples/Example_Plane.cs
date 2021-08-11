@@ -19,7 +19,7 @@ namespace Editor.ModelAutoOverView.Examples
 		{
 		}
 
-		public override void DrawUI(Rect rect)
+		public override void DrawUI()
 		{
 		}
 

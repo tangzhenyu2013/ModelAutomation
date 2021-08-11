@@ -1,10 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Editor.ModelAutoOverView.OverViewExample
 {
-    /// <summary>
-    /// Example的基类
-    /// </summary>
     [ModelAuto]
     public abstract class AExample_Base
     {
@@ -12,7 +10,7 @@ namespace Editor.ModelAutoOverView.OverViewExample
 
         public abstract void Init();
 
-        public abstract void DrawUI(Rect rect);
+        public abstract void DrawUI();
 
         public abstract void Destroy();
     }

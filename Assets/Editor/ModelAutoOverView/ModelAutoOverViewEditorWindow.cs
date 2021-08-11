@@ -1,4 +1,5 @@
 ﻿using System;
+using Editor.ModelAutoOverView.Examples;
 using Editor.ModelAutoOverView.OverViewExample;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
@@ -10,7 +11,7 @@ namespace Editor.ModelAutoOverView
 {
     public class ModelAutoOverViewEditorWindow : OdinMenuEditorWindow
     {
-        private ModelAutoOverViewItem exampleItem;
+        private AExample_Base aExampleBase;
 
         [MenuItem("Tools/模型编辑窗口")]
         private static void OpenWindow()
@@ -20,7 +21,7 @@ namespace Editor.ModelAutoOverView
             if (flag)
             {
                 window.MenuWidth = 250f;
-                window.position = GUIHelper.GetEditorWindowRect().AlignCenterXY(850f, 700f);
+                window.position = GUIHelper.GetEditorWindowRect().AlignCenterXY(1000, 800f);
             }
         }
 
@@ -37,23 +38,34 @@ namespace Editor.ModelAutoOverView
 
         private void SelectionChanged(SelectionChangedType selectionChangedType)
         {
-            if (exampleItem != null)
+            if (aExampleBase != null)
             {
-                exampleItem.GetExample().Destroy();
+                aExampleBase.Destroy();
             }
 
-            exampleItem = null;
-            if(null == MenuTree.Selection.SelectedValue) return;
-            exampleItem = ModelAutoOverViewUtilities.GetItemByType( (Type)MenuTree.Selection.SelectedValue);
-            exampleItem.GetExample().Init();
+            aExampleBase = (AExample_Base) MenuTree.Selection.SelectedValue;
+
+            if (aExampleBase != null) aExampleBase.Init();
         }
 
         protected override void DrawEditors()
         {
+            base.DrawEditors();
+            if (aExampleBase != null)
+                aExampleBase.DrawUI();
+        }
+
+        protected override void DrawMenu()
+        {
+            base.DrawMenu();
+        }
+
+        protected override void OnDestroy()
+        {
             base.OnDestroy();
-            if (exampleItem != null)
-                exampleItem.GetExample().Destroy();
-            exampleItem = null;
+            if (aExampleBase != null)
+                aExampleBase.Destroy();
+            aExampleBase = null;
         }
     }
 }

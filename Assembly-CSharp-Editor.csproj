@@ -74,7 +74,6 @@
     <Compile Include="Assets\Editor\ModelAutoOverView\OverViewExample\AExample_Base.cs" />
     <Compile Include="Assets\Editor\ModelAutoOverView\OverViewExample\ModelAutoAttribute.cs" />
     <Compile Include="Assets\Editor\ModelAutoOverView\OverViewExample\ModelAutoOverViewInfo.cs" />
-    <Compile Include="Assets\Editor\ModelAutoOverView\OverViewExample\ModelAutoOverViewItem.cs" />
     <Compile Include="Assets\Editor\ModelAutoOverView\OverViewExample\ModelAutoOverViewUtilities.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>E:/TZYUnity/ModelAutomation/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
