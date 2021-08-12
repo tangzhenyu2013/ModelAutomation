@@ -46,40 +46,8 @@ namespace Editor.ModelAutoOverView.Examples
         /// 是否显示所有的模型
         /// </summary>
         [LabelText("所有模型/问题模型")] [ShowInInspector] [LabelWidth(150f)] [HorizontalGroup("0")]
-        private bool isShowAllModel;
+        private bool isShowAllModel = true;
 
-        [Button("一键设置")]
-        [HorizontalGroup("0", 100f, 0, 500, 1)]
-        public void SetModel()
-        {
-            List<string> materialPaths = new List<string>();
-            string tempPath;
-            foreach (var modelImporter in modelImporters)
-            {
-                modelImporter.Value.materialLocation = ModelImporterMaterialLocation.External;
-                EditorUtility.SetDirty(modelImporter.Value);
-                AssetDatabase.ImportAsset(modelImporter.Key);
-                tempPath = Path.GetDirectoryName(modelImporter.Key);
-                if (!materialPaths.Contains(tempPath))
-                {
-                    materialPaths.Add(tempPath);
-                }
-            }
-
-            AssetDatabase.Refresh();
-
-            string[] allGuids = AssetDatabase.FindAssets("t:Material",
-                new[] {assetPath});
-
-            for (int i = 0; i < materialPaths.Count; i++)
-            {
-                tempPath = AssetDatabase.GUIDToAssetPath(allGuids[i]);
-                if (materialPaths.Contains(tempPath))
-                {
-                    Debug.Log(tempPath);
-                }
-            }
-        }
 
         public override ModelAutoOverViewInfo GetTrickOverViewInfo()
         {
@@ -116,7 +84,7 @@ namespace Editor.ModelAutoOverView.Examples
 
                 if (null == modelImporter) continue;
 
-                if (isShowAllModel && modelImporter.materialLocation == ModelImporterMaterialLocation.External)
+                if (!isShowAllModel && modelImporter.materialLocation == ModelImporterMaterialLocation.External)
                 {
                     continue;
                 }
@@ -136,6 +104,33 @@ namespace Editor.ModelAutoOverView.Examples
 
             if (null == modelEditor) return;
             modelEditor.DrawPreview(new Rect(470, 0, 200, 200));
+        }
+
+        [Button("一键设置")]
+        [HorizontalGroup("0", 100f, 0, 500, 1)]
+        public void SetModel()
+        {
+            foreach (var modelImporter in modelImporters)
+            {
+                modelImporter.Value.materialLocation = ModelImporterMaterialLocation.External;
+                EditorUtility.SetDirty(modelImporter.Value);
+                AssetDatabase.ImportAsset(modelImporter.Key);
+            }
+
+            AssetDatabase.Refresh();
+
+            string[] allGuids = AssetDatabase.FindAssets("t:Material",
+                new[] {assetPath});
+
+            for (int i = 0; i < allGuids.Length; i++)
+            {
+                string tempPath = AssetDatabase.GUIDToAssetPath(allGuids[i]);
+                Material material = AssetDatabase.LoadAssetAtPath<Material>(tempPath);
+                if (null == material) continue;
+                material.shader = Shader.Find("Legacy Shaders/Transparent/Cutout/Soft Edge Unlit");
+                material.color = Color.white;
+                AssetDatabase.ImportAsset(tempPath);
+            }
         }
 
         public override void Destroy()
