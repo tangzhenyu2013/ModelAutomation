@@ -1,30 +1,28 @@
-﻿using Editor.ModelAutoOverView.OverViewExample;
-using Sirenix.Utilities.Editor;
-using UnityEngine;
+﻿using Sirenix.Utilities.Editor;
 
-namespace Editor.ModelAutoOverView.Examples
+
+/// <summary>
+/// 驻扎皮肤
+/// </summary>
+public class Example_StationedSkin : AExample_Base
 {
-	/// <summary>
-	/// 驻扎皮肤
-	/// </summary>
-	public class Example_StationedSkin : AExample_Base {
-		private static readonly ModelAutoOverViewInfo ModelAutoOverViewInfo = new ModelAutoOverViewInfo(
-			"驻扎皮肤", "模型编辑", "针对驻扎皮肤模型的编辑调整",EditorIcons.Car.Active);
-		public override ModelAutoOverViewInfo GetTrickOverViewInfo()
-		{
-			return ModelAutoOverViewInfo;
-		}
+    private static readonly ModelAutoOverViewInfo ModelAutoOverViewInfo = new ModelAutoOverViewInfo(
+        "驻扎皮肤", "模型编辑", "针对驻扎皮肤模型的编辑调整", EditorIcons.Car.Active);
 
-		public override void Init()
-		{
-		}
+    public override ModelAutoOverViewInfo GetTrickOverViewInfo()
+    {
+        return ModelAutoOverViewInfo;
+    }
 
-		public override void DrawUI()
-		{
-		}
+    public override void Init()
+    {
+    }
 
-		public override void Destroy()
-		{
-		}
-	}
+    public override void DrawUI()
+    {
+    }
+
+    public override void Destroy()
+    {
+    }
 }

@@ -1,17 +1,11 @@
-﻿using System;
-using UnityEngine;
-
-namespace Editor.ModelAutoOverView.OverViewExample
+﻿[ModelAuto]
+public abstract class AExample_Base
 {
-    [ModelAuto]
-    public abstract class AExample_Base
-    {
-        public abstract ModelAutoOverViewInfo GetTrickOverViewInfo();
+    public abstract ModelAutoOverViewInfo GetTrickOverViewInfo();
 
-        public abstract void Init();
+    public abstract void Init();
 
-        public abstract void DrawUI();
+    public abstract void DrawUI();
 
-        public abstract void Destroy();
-    }
+    public abstract void Destroy();
 }
