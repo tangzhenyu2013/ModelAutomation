@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using System.Threading.Tasks;
 
 /// <summary>
 /// 航母
@@ -20,7 +20,8 @@ public class Example_CV : AExample_Base
     /// <summary>
     /// 模型Editor
     /// </summary>
-    private Editor modelEditor;
+    // private Editor modelEditor;
+    private EditorWindow _editorWindow;
 
     /// <summary>
     /// 模型路径
@@ -95,23 +96,30 @@ public class Example_CV : AExample_Base
             if (GUILayout.Button(name[i], GUILayout.Width(200)))
             {
                 Object model = AssetDatabase.LoadAssetAtPath<Object>(path[i]);
-                modelEditor = Editor.CreateEditor(model);
+                if (null == _editorWindow)
+                {
+                    _editorWindow = DockUtilities.GetInspectTarget(model);
+                    ModelAutoOverViewEditorWindow.Instance.DockWindow(_editorWindow,DockUtilities.DockPosition.Right);
+                }
+                else
+                {
+                    _editorWindow.SetInspectTarget(model);
+                }
             }
         }
-
-        if (null == modelEditor) return;
-        modelEditor.DrawPreview(new Rect(470, 0, 200, 200));
     }
 
     [Button("一键设置")]
     [HorizontalGroup("0", 100f, 0, 500, 1)]
     public void SetModel()
     {
+        List<string> modelName = new List<string>();
         foreach (var modelImporter in modelImporters)
         {
             modelImporter.Value.materialLocation = ModelImporterMaterialLocation.External;
             EditorUtility.SetDirty(modelImporter.Value);
             AssetDatabase.ImportAsset(modelImporter.Key);
+            modelName.Add(Path.GetFileName(modelImporter.Key).Replace(".fbx", ""));
         }
 
         AssetDatabase.Refresh();
@@ -123,7 +131,8 @@ public class Example_CV : AExample_Base
         {
             string tempPath = AssetDatabase.GUIDToAssetPath(allGuids[i]);
             Material material = AssetDatabase.LoadAssetAtPath<Material>(tempPath);
-            if (null == material) continue;
+            string str = modelName.Find(x => x.Contains(Path.GetFileName(tempPath).Replace(".mat", "")));
+            if (null == material || string.IsNullOrEmpty(str)) continue;
             material.shader = Shader.Find("Legacy Shaders/Transparent/Cutout/Soft Edge Unlit");
             material.color = Color.white;
             AssetDatabase.ImportAsset(tempPath);
@@ -133,9 +142,10 @@ public class Example_CV : AExample_Base
     public override void Destroy()
     {
         path = null;
-        modelEditor = null;
         name = null;
         modelImporters = null;
         materials = null;
+        _editorWindow.Close();
+        _editorWindow = null;
     }
 }

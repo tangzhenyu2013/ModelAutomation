@@ -7,7 +7,9 @@ using UnityEngine;
 
 public class ModelAutoOverViewEditorWindow : OdinMenuEditorWindow
 {
-    private AExample_Base aExampleBase;
+    private AExample_Base _aExampleBase;
+
+    public static ModelAutoOverViewEditorWindow Instance;
 
     [MenuItem("Tools/模型编辑窗口")]
     private static void OpenWindow()
@@ -19,6 +21,7 @@ public class ModelAutoOverViewEditorWindow : OdinMenuEditorWindow
             window.MenuWidth = 250f;
             window.position = GUIHelper.GetEditorWindowRect().AlignCenterXY(1000, 800f);
         }
+        Instance = window;
     }
 
     protected override OdinMenuTree BuildMenuTree()
@@ -34,21 +37,17 @@ public class ModelAutoOverViewEditorWindow : OdinMenuEditorWindow
 
     private void SelectionChanged(SelectionChangedType selectionChangedType)
     {
-        if (aExampleBase != null)
-        {
-            aExampleBase.Destroy();
-        }
+        _aExampleBase?.Destroy();
 
-        aExampleBase = (AExample_Base) MenuTree.Selection.SelectedValue;
+        _aExampleBase = (AExample_Base) MenuTree.Selection.SelectedValue;
 
-        if (aExampleBase != null) aExampleBase.Init();
+        _aExampleBase?.Init();
     }
 
     protected override void DrawEditors()
     {
         base.DrawEditors();
-        if (aExampleBase != null)
-            aExampleBase.DrawUI();
+        _aExampleBase?.DrawUI();
     }
 
     protected override void DrawMenu()
@@ -59,8 +58,7 @@ public class ModelAutoOverViewEditorWindow : OdinMenuEditorWindow
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        if (aExampleBase != null)
-            aExampleBase.Destroy();
-        aExampleBase = null;
+        _aExampleBase?.Destroy();
+        _aExampleBase = null;
     }
 }
