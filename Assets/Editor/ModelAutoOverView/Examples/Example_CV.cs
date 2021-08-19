@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using System.Threading.Tasks;
 
 /// <summary>
 /// 航母
@@ -13,7 +11,7 @@ using System.Threading.Tasks;
 public class Example_CV : AExample_Base
 {
     private static readonly ModelAutoOverViewInfo ModelAutoOverViewInfo = new ModelAutoOverViewInfo(
-        "航母", "模型编辑", "针对航母模型的编辑调整", EditorIcons.Car.Active);
+        "航母", "模型编辑", "针对航母模型的编辑调整", Resources.Load<Texture>("Textures/HeadIcons/HeadImage01"));
 
     private static string assetPath = "Assets/Resources/Prefabs/Animation/3DAircraftCarrier";
 
@@ -26,19 +24,19 @@ public class Example_CV : AExample_Base
     /// <summary>
     /// 模型路径
     /// </summary>
-    private List<string> path;
+    private List<string> path = new List<string>();
 
     /// <summary>
     /// 模型名称
     /// </summary>
-    private List<string> name;
+    private List<string> name = new List<string>();
 
     /// <summary>
     /// 有问题的模型集合
     /// </summary>
-    private Dictionary<string, ModelImporter> modelImporters;
+    private Dictionary<string, ModelImporter> modelImporters = new Dictionary<string, ModelImporter>();
 
-    private List<Material> materials;
+    private List<Material> materials = new List<Material>();
 
     /// <summary>
     /// 是否显示所有的模型
@@ -54,8 +52,6 @@ public class Example_CV : AExample_Base
 
     public override void Init()
     {
-        InitList();
-
         string[] allGuids = AssetDatabase.FindAssets("t:Model",
             new[] {assetPath});
 
@@ -64,14 +60,6 @@ public class Example_CV : AExample_Base
             path.Add(AssetDatabase.GUIDToAssetPath(allGuids[i]));
             name.Add(Path.GetFileName(path[i]));
         }
-    }
-
-    private void InitList()
-    {
-        if (null == path) path = new List<string>();
-        if (null == name) name = new List<string>();
-        if (null == modelImporters) modelImporters = new Dictionary<string, ModelImporter>();
-        if (null == materials) materials = new List<Material>();
     }
 
     public override void DrawUI()
@@ -99,7 +87,7 @@ public class Example_CV : AExample_Base
                 if (null == _editorWindow)
                 {
                     _editorWindow = DockUtilities.GetInspectTarget(model);
-                    ModelAutoOverViewEditorWindow.Instance.DockWindow(_editorWindow,DockUtilities.DockPosition.Right);
+                    ModelAutoOverViewEditorWindow.Instance.DockWindow(_editorWindow, DockUtilities.DockPosition.Right);
                 }
                 else
                 {
@@ -141,11 +129,14 @@ public class Example_CV : AExample_Base
 
     public override void Destroy()
     {
-        path = null;
-        name = null;
-        modelImporters = null;
-        materials = null;
-        _editorWindow.Close();
-        _editorWindow = null;
+        path.Clear();
+        name.Clear();
+        modelImporters.Clear();
+        materials.Clear();
+        if (_editorWindow != null)
+        {
+            _editorWindow.Close();
+            _editorWindow = null;
+        }
     }
 }

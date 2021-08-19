@@ -338,24 +338,6 @@
     <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
       <HintPath>E:/TZYUnity/ModelAutomation/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
     </Reference>
-    <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>E:/TZYUnity/ModelAutomation/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.OdinInspector.Editor">
-      <HintPath>E:/TZYUnity/ModelAutomation/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Serialization.Config">
-      <HintPath>E:/TZYUnity/ModelAutomation/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Serialization">
-      <HintPath>E:/TZYUnity/ModelAutomation/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Utilities">
-      <HintPath>E:/TZYUnity/ModelAutomation/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Utilities.Editor">
-      <HintPath>E:/TZYUnity/ModelAutomation/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/Administrator/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
@@ -370,6 +352,24 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/Administrator/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization">
+      <HintPath>E:/TZYUnity/ModelAutomation/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities">
+      <HintPath>E:/TZYUnity/ModelAutomation/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities.Editor">
+      <HintPath>E:/TZYUnity/ModelAutomation/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Editor">
+      <HintPath>E:/TZYUnity/ModelAutomation/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Attributes">
+      <HintPath>E:/TZYUnity/ModelAutomation/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization.Config">
+      <HintPath>E:/TZYUnity/ModelAutomation/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:/2018.2.1/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -722,28 +722,6 @@
     <Reference Include="Boo.Lang">
       <HintPath>D:/2018.2.1/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{FD7E9DC5-F4DD-7161-0AF5-C2F9360C0F04}</Project>
-      <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
-    <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
-      <Project>{43B83F54-7259-601A-F8B0-56347F3BEC5A}</Project>
-      <Name>Assembly-CSharp-Editor-firstpass</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinValidator.csproj">
-      <Project>{713337E4-495D-691D-832B-39A46C00117D}</Project>
-      <Name>Sirenix.OdinValidator</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
-      <Project>{CA8EEF08-0A30-3AF0-7DDA-47137A321CB7}</Project>
-      <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
-      <Project>{AEE90D3E-177F-1E58-8877-DCC687890E70}</Project>
-      <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

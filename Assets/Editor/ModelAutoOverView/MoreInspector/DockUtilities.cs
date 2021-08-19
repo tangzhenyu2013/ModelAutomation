@@ -36,7 +36,6 @@ public static class DockUtilities
                 break;
         }
 
-        Debug.Log(wnd.position);
         return new Vector2(wnd.position.x + mousePosition.x, wnd.position.y + mousePosition.y);
     }
 
